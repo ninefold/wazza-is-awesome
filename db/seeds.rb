@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Post.delete_all
+(1..5).each do |num|
+  Post.create(:name => "Post #{num}", :title => "My post number #{num}", 
+              :content => "Much ado about nothing for post #{num}")
+end
+puts "Success: Post seed data loaded"
