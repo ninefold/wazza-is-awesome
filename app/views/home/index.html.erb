@@ -1,9 +1,9 @@
 <h1>Wazza's Awesome Deployment Test App</h1>
 
 <ul>
-  <li><a href="#rails_config">Rails configuration</a></li>
   <li><a href="#db_config">Database configuration</a></li>
   <li><a href="#env_config">Environment Settings</a></la>
+  <li><a href="#rails_config">Rails configuration</a></li>
 </ul>
 
 <a name="rails_config"><h2>App RAILS config</h2></a>
@@ -14,11 +14,11 @@
     <tr><td> <b><%= var %>:</b></td>
     <% value = rac.instance_variable_get(var) -%>
     <td> <%= value.class %></td><td>
-    <% case value.class -%>
-    <% when Hash -%>
+    <% case value.class.to_s -%>
+    <% when 'Hash' -%>
       <% value.keys.sort.each do |key| %><%= key %> => <%= value[key] %><br><% end %>
-    <% when Array -%>
-      <% value.sort.each do |x| %><%= x %><br><% end %>
+    <% when 'Array' -%>
+      <% value.each do |x| %><%= x %><br><% end %>
     <% else -%>
       <%= value.inspect %>
     <% end -%>
