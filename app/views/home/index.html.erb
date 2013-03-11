@@ -1,0 +1,41 @@
+<h1>Wazza's Awesome Deployment Test App</h1>
+
+<ul>
+  <li><a href="#rails_config">Rails configuration</a></li>
+  <li><a href="#db_config">Database configuration</a></li>
+  <li><a href="#env_config">Environment Settings</a></la>
+</ul>
+
+<a name="rails_config"><h2>App RAILS config</h2></a>
+<table border="1">
+  <th>Variable</th><th>Type</th><th>Value</th>
+  <% rac = Rails.application.config -%>
+  <% rac.instance_variables.sort.each do |var| %>
+    <tr><td> <b><%= var %>:</b></td>
+    <% value = rac.instance_variable_get(var) -%>
+    <td> <%= value.class %></td><td>
+    <% case value.class -%>
+    <% when Hash -%>
+      <% value.keys.sort.each do |key| %><%= key %> => <%= value[key] %><br><% end %>
+    <% when Array -%>
+      <% value.sort.each do |x| %><%= x %><br><% end %>
+    <% else -%>
+      <%= value.inspect %>
+    <% end -%>
+    </td></tr>
+  <% end -%>
+</table>
+
+<a name="db_config"><h2>App DATABASE config</h2></a>
+<table border="1">
+  <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| %>
+    <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
+  <% end -%>
+</table>
+
+<a name="env_config"><h2>App ENV parameters</h2></a>
+<table border="1">
+  <% ENV.keys.sort {|x,y| x.upcase <=> y.upcase}.each do |key| -%>
+    <tr><td> <b><%= key %>:</b></td><td> <%= ENV[key] %></td></tr>
+  <% end -%>
+</table>
