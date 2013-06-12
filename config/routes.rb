@@ -1,5 +1,6 @@
 DeployTest::Application.routes.draw do
   resources :posts
+  resources :jobs
 
 
   get "home/index"
