@@ -11,7 +11,7 @@ class WriteToDatabaseJob
     for i in 1..250
       puts "Iteration: #{i}/#{iterations}"
       for x in 1..posts_per_iteration
-        Post.create! :content => ((0...512).map{ ('a'..'z').to_a[rand(26)] }.join)
+        Post.create! :content => ((0...512).map{ ('a'..'z').to_a[rand(26)] }.join),
           :name => "Autogen Post, from server: #{Socket.gethostbyname(Socket.gethostname).first}",
           :title => "New Post at: #{Time.now.inspect}"
         sleep sleep_between_writes
