@@ -15,6 +15,7 @@ end
 
 gem 'foreman'
 gem 'resque', '~> 1.24.1'
+gem 'lograge'
 
 # Gems used only for assets and not required
 # in production environments by default.

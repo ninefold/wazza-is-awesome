@@ -20,6 +20,9 @@ DeployTest::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # Configure log rage to make rails log more consumable
+  config.lograge.enabled = true
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

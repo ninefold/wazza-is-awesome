@@ -34,4 +34,7 @@ DeployTest::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Configure log rage to make rails log more consumable
+  config.lograge.enabled = false
 end
