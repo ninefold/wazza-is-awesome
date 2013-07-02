@@ -34,4 +34,7 @@ DeployTest::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Configure log rage to make rails log more consumable
+  config.lograge.enabled = true
 end
