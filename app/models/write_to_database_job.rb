@@ -7,7 +7,7 @@ class WriteToDatabaseJob
     sleep_between_iterations = 1
     sleep_between_writes = 0
 
-    puts "Creating 1000 records each iteration. #{iterations} iterations. #{sleep_between_iterations} seconds sleep between each iteration. #{sleep_between_writes} second wait between each write."
+    puts "Creating #{posts_per_iteration} records each iteration. #{iterations} iterations. #{sleep_between_iterations} seconds sleep between each iteration. #{sleep_between_writes} second wait between each write."
     for i in 1..250
       puts "Iteration: #{i}/#{iterations}"
       for x in 1..posts_per_iteration
