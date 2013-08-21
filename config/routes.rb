@@ -1,5 +1,8 @@
 DeployTest::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    collection :populate
+  end
+
   resources :jobs
 
 

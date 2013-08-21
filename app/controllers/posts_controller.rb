@@ -80,4 +80,14 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def populate
+    count = params[:count] || 999
+    s = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non tellus at nulla semper pretium. Pellentesque vitae nunc eleifend, aliquam tellus a, ultrices turpis. Integer id ipsum molestie, congue dolor id, faucibus augue. Cras non lacus dignissim, pellentesque libero vitae, egestas nisi. Vestibulum id massa diam. Pellentesque sed bibendum libero, ut dignissim tellus. Fusce euismod sem eu neque egestas, et congue neque lobortis. Morbi lectus purus, rutrum sed rhoncus tempor, fringilla in arcu. Pellentesque bibendum dictum elit ac dictum. Praesent in lectus tortor."
+    (1..count).each do |i|
+      Post.create!(title: "Title-#{count}", content: "Content-#{count}\n\n#{s}")
+    end
+  end
+
+
 end
