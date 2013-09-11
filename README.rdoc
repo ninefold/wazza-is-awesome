@@ -2,4 +2,4 @@ This is a simple Rails app to test Ninefold App deployments
 
 Make sure you start resque.
 
-    QUEUE="*" bundle exec rake environment resque:work
+    QUEUE="*" bundle exec rake resque:work
