@@ -1,1 +1,1 @@
-worker: bundle exec rake resque:work --trace QUEUE=*
+worker: bundle exec rake environment resque:work --trace QUEUE=*
