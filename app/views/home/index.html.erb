@@ -30,6 +30,7 @@
 
 <a name="db_config"><h2>App DATABASE config</h2></a>
 <table border="1">
+    <tr><td> <b>Version:</b></td><td> <%= %x{pg_config --version} %></td></tr>
   <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| %>
     <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
   <% end -%>
