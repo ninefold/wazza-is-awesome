@@ -13,7 +13,7 @@ group :production do
   gem 'pg'
 end
 
-gem 'foreman'
+gem 'skylight'
 gem 'resque', '~> 1.24.1'
 gem 'lograge'
 
