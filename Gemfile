@@ -16,6 +16,7 @@ end
 gem 'skylight'
 gem 'resque', '~> 1.24.1'
 gem 'lograge'
+gem 'curb', '0.8.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
