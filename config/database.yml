@@ -30,7 +30,7 @@ test:
   password:
 
 production:
-  adapter: pg
+  adapter: postgresql
   encoding: utf8
   reconnect: false
   database: deploy-test_production
