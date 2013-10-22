@@ -8,7 +8,7 @@ class WriteToDatabaseJob
     posts_per_iteration = 1024
     post_byte_size = 1024
     sleep_between_iterations = 2
-    sleep_between_writes = 1
+    sleep_between_writes = 0
 
     puts "Creating #{posts_per_iteration} records each iteration. #{iterations} iterations. #{sleep_between_iterations} seconds sleep between each iteration. #{sleep_between_writes} second wait between each write."
     for i in 1..iterations
