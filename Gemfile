@@ -36,6 +36,10 @@ gem 'jquery-rails'
 # check that curb gem package is installed properly OCT-3262
 gem 'curb'
 
+# test cron jobs using whenever. the :require => false
+# tells bundler not to load the gem automatically
+gem 'whenever', :require => false
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

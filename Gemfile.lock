@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    chronic (0.10.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -129,6 +130,9 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    whenever (0.8.4)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -146,3 +150,4 @@ DEPENDENCIES
   sqlite3
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  whenever
