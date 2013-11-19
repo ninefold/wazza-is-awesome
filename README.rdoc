@@ -4,4 +4,5 @@ Make sure you start resque.
 
     QUEUE="*" bundle exec rake environment resque:worki
 
-Actually, this already happens in a Procfile!
+Actually, this already happens in a Procfile! So just deploy
+on Ninefold and all good...
