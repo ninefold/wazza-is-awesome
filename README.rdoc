@@ -7,3 +7,4 @@ Make sure you start resque.
 Actually, this already happens in a Procfile! So just deploy
 on Ninefold and all good...
 
+add some stuff
