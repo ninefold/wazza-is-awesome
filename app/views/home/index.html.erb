@@ -2,14 +2,23 @@
 
 <ul>
   <li><a href="#db_config">Database configuration</a></li>
-  <li><a href="#env_config">Environment Settings</a></la>
-  <li><a href="#rails_config">Rails configuration</a></li><br>
+  <li><a href="#env_config">Environment Settings</a></li>
+  <li><a href="#ruby_config">Ruby configuration</a></li>
+  <li><a href="#rails_config">Rails configuration</a></li>
   <li><a href="/posts">Test Database (postgresql) using Posts</a></li>
   <li><a href="/jobs">Test Background Jobs (redis) using Posts</a></li>
 </ul>
 
+<h2><a name="ruby_config">Ruby configuration</a></h2>
+<table class="table">
+  <% %w(Version Patchlevel Release_date Platform).each do |item| -%>
+    <tr><td> <b><%= item %></b></td><td> <%= eval("RUBY_#{item.ucase}") %></td></tr>
+  <% end -%>
+</table>
+
 <h2><a name="rails_config">App RAILS config</a></h2>
 <table class="table">
+  <tr><td> <b>Rails version:</b></td><td> <%= Rails.version %></td></tr>
   <th>Variable</th><th>Type</th><th>Value</th>
   <% rac = Rails.application.config -%>
   <% rac.instance_variables.sort.each do |var| %>
@@ -31,7 +40,7 @@
 <h2><a name="db_config">App DATABASE config</a></h2>
 <table class="table">
     <tr><td> <b>pg_config:</b></td><td> <%= %x{pg_config} %></td></tr>
-  <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| %>
+  <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| -%>
     <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
   <% end -%>
 </table>
