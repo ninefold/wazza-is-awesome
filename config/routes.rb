@@ -1,5 +1,9 @@
 DeployTest::Application.routes.draw do
-  resources :posts
+  resources :posts do
+    member do
+      get 'email'
+    end
+  end
   resources :jobs
 
 

@@ -21,6 +21,20 @@ class PostsController < ApplicationController
     end
   end
 
+  # GET /posts/1/email
+  def email
+    @post = Post.find(params[:id])
+
+    # Tell the UserMailer to send a welcome Email after save
+    success = UserMailer.hello_email(@post).deliver
+
+    respond_to do |format|
+      format.html { redirect_to(@post, notice: "Post was successfully emailed to #{@post.email}.") }
+      format.json { render json: @post }
+    end
+
+  end
+
   # GET /posts/new
   # GET /posts/new.json
   def new
