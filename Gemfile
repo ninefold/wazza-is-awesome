@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "9.9.9-p244"
+ruby "2.0.0-p455"
 
 gem 'rails', '3.2.9'
 
