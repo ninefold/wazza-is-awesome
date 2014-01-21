@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0-p455"
+
+if RUBY_VERSION[2] == "1" || ENV['RUBY21']
+  ruby "2.1.0"
+else
+  ruby "2.0.0"
+end
 
 gem 'rails', '3.2.9'
 
