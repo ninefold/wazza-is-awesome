@@ -19,7 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 15.minutes do
-  command "echo 'I am running from cron!'"
-end
+env :SAMPLE_ENV_VAR, ENV['SAMPLE_ENV_VAR'] 
 
+every 15.minutes do
+  command "echo \"I am running from cron! Environment variable value: ${SAMPLE_ENV_VAR}\""
+end
