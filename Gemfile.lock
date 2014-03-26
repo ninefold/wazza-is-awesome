@@ -141,6 +141,7 @@ GEM
       chronic (>= 0.6.3)
 
 PLATFORMS
+  x86-mingw32
   ruby
 
 DEPENDENCIES
