@@ -30,10 +30,12 @@ test:
   password:
 
 production:
-  adapter: postgresql
+  adapter: mysql2 
   encoding: utf8
   reconnect: false
   database: deploy-test_production
   pool: 5
   username: root
-  password:
+  password: root
+  host: 172.34.0.55
+  port: 3306
