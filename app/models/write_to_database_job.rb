@@ -10,6 +10,10 @@ class WriteToDatabaseJob
     sleep_between_iterations = 1
     sleep_between_writes = 0
 
+    puts "Job is kicking off with the following environment:"
+    ENV.keys.each do |k|
+      puts "#{k}=#{ENV[k]}"
+    end
     puts "Creating #{posts_per_iteration} records each iteration. #{iterations} iterations. #{sleep_between_iterations} seconds sleep between each iteration. #{sleep_between_writes} second wait between each write."
     for i in 1..iterations
       puts "Iteration: #{i}/#{iterations}"
