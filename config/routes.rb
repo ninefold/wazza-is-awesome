@@ -5,6 +5,7 @@ DeployTest::Application.routes.draw do
     end
   end
   resources :jobs
+  resources :email_jobs
 
 
   get "home/index"

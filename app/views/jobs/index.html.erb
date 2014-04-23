@@ -1,5 +1,20 @@
-<h1>Posts from Jobs</h1>
+<h1>Background Jobs</h1>
 
-<p><%= pluralize Post.count, 'post' %></p>
+<p id="notice"><%= notice %></p>
 
-<p><%= link_to 'Create a Post in the Background', jobs_path, :method => :post %></p>
+<p>There are <%= pluralize Post.count, 'post' %> posts in the database.</p>
+
+<hr />
+
+<%= link_to 'Create lots of posts in the Background', jobs_path, :method => :post, :class => "btn btn-lg" %>
+This will use Resque to create posts iteratively over time. You'll end up with lots of them.
+
+<hr />
+
+<fieldset>
+<%= form_tag(email_jobs_path, method: :post) do %>
+  <%= label_tag(:q, "Email address:") %>
+  <%= text_field_tag(:email) %>
+  <%= submit_tag("Email me in the background") %>
+<% end %>
+</fieldset>

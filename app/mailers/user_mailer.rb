@@ -6,8 +6,10 @@ class UserMailer < ActionMailer::Base
     if @post.email
       mail(to: @post.email, subject: 'Email from wazza-is-awesome')
       logger.info "Sent email to #{@post.email}"
+      puts "Sent email to #{@post.email}"
     else
       logger.info "No email specified for this record. Not sending email."
+      puts "No email specified for this record. Not sending email."
     end
   end
 end
