@@ -6,7 +6,7 @@ DeployTest::Application.routes.draw do
   end
   resources :jobs
   resources :email_jobs
-
+  match 'bgenvvars' => 'jobs#env_vars'
 
   get "home/index"
 
