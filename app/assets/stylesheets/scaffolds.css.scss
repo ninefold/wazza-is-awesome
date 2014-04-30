@@ -6,27 +6,10 @@ body {
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 div {
@@ -65,5 +48,19 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+  }
+}
+
+.navbar-header {
+  img {
+    background-color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  .btn {
+    float: right;
+    margin-top: 50px;
+    margin-right: 20px;
   }
 }

@@ -1,0 +1,19 @@
+<table class="table">
+  <tr><td> <b>Rails version:</b></td><td> <%= Rails.version %></td></tr>
+  <th>Variable</th><th>Type</th><th>Value</th>
+  <% rac = Rails.application.config -%>
+  <% rac.instance_variables.sort.each do |var| %>
+    <tr><td> <b><%= var %>:</b></td>
+    <% value = rac.instance_variable_get(var) -%>
+    <td> <%= value.class %></td><td>
+    <% case value.class.to_s -%>
+    <% when 'Hash' -%>
+      <% value.keys.sort.each do |key| %><%= key %> => <%= value[key] %><br><% end %>
+    <% when 'Array' -%>
+      <% value.each do |x| %><%= x %><br><% end %>
+    <% else -%>
+      <%= value.inspect.scan(/.{1,20}/).join("<wbr>").html_safe %>
+    <% end -%>
+    </td></tr>
+  <% end -%>
+</table>

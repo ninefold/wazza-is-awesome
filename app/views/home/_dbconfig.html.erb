@@ -1,0 +1,6 @@
+<table class="table">
+    <tr><td> <b>pg_config:</b></td><td> <%= %x{pg_config} %></td></tr>
+  <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| -%>
+    <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
+  <% end -%>
+</table>

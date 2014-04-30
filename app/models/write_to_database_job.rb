@@ -6,7 +6,7 @@ class WriteToDatabaseJob
     # which should take about 30 mins to run
     iterations = 1024
     posts_per_iteration = 1024
-    post_byte_size = 1024
+    post_byte_size = 64
     sleep_between_iterations = 1
     sleep_between_writes = 0
 
@@ -19,8 +19,8 @@ class WriteToDatabaseJob
       puts "Iteration: #{i}/#{iterations}"
       for x in 1..posts_per_iteration
         Post.create! :content => ((0...post_byte_size).map{ ('a'..'z').to_a[rand(26)] }.join),
-          :name => "Autogen Post, from server: #{Socket.gethostname}",
-          :title => "New Post at: #{Time.now.inspect}"
+          :name => Socket.gethostname,
+          :title => Time.now.inspect
         sleep rand * sleep_between_writes
       end
       sleep rand * sleep_between_iterations

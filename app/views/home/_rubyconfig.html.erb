@@ -1,0 +1,5 @@
+<table class="table">
+  <% %w(Version Patchlevel Release_date Platform).each do |item| -%>
+    <tr><td> <b><%= item %></b></td><td> <%= eval("RUBY_#{item.upcase}") %></td></tr>
+  <% end -%>
+</table>

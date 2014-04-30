@@ -1,53 +1,79 @@
-<h1>Ninefold's wazza-is-awesome test app</h1>
+<h2>App Testing</h2>
+<div class="btn-group">
+  <a class="btn btn-default" href="/posts">Test the Database</a>
+  <a class="btn btn-default" href="/jobs">Test Resque</a>
+</div>
 
-<ul>
-  <li><a href="#db_config">Database configuration</a></li>
-  <li><a href="#env_config">Environment Settings</a></li>
-  <li><a href="#ruby_config">Ruby configuration</a></li>
-  <li><a href="#rails_config">Rails configuration</a></li><br>
-  <li><a href="/posts/">View and Add Individual Posts</a></li>
-  <li><a href="/jobs/">Run Background Jobs via Resque using Posts</a></li>
-</ul>
-
-<h2><a name="ruby_config">Ruby configuration</a></h2>
-<table class="table">
-  <% %w(Version Patchlevel Release_date Platform).each do |item| -%>
-    <tr><td> <b><%= item %></b></td><td> <%= eval("RUBY_#{item.upcase}") %></td></tr>
-  <% end -%>
-</table>
-
-<h2><a name="rails_config">App RAILS config</a></h2>
-<table class="table">
-  <tr><td> <b>Rails version:</b></td><td> <%= Rails.version %></td></tr>
-  <th>Variable</th><th>Type</th><th>Value</th>
-  <% rac = Rails.application.config -%>
-  <% rac.instance_variables.sort.each do |var| %>
-    <tr><td> <b><%= var %>:</b></td>
-    <% value = rac.instance_variable_get(var) -%>
-    <td> <%= value.class %></td><td>
-    <% case value.class.to_s -%>
-    <% when 'Hash' -%>
-      <% value.keys.sort.each do |key| %><%= key %> => <%= value[key] %><br><% end %>
-    <% when 'Array' -%>
-      <% value.each do |x| %><%= x %><br><% end %>
-    <% else -%>
-      <%= value.inspect.scan(/.{1,20}/).join("<wbr>").html_safe %>
-    <% end -%>
-    </td></tr>
-  <% end -%>
-</table>
-
-<h2><a name="db_config">App DATABASE config</a></h2>
-<table class="table">
-    <tr><td> <b>pg_config:</b></td><td> <%= %x{pg_config} %></td></tr>
-  <% Rails.application.config.database_configuration[ENV['RAILS_ENV']].each do |key,value| -%>
-    <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
-  <% end -%>
-</table>
-
-<h2><a name="env_config">App ENV parameters</a></h2>
-<table class="table">
-  <% ENV.keys.sort {|x,y| x.upcase <=> y.upcase}.each do |key| -%>
-    <tr><td> <b><%= key %>:</b></td><td> <%= ENV[key].scan(/.{1,20}/).join("<wbr>").html_safe %></td></tr>
-  <% end -%>
-</table>
+<h2>App Details</h2>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Ruby configuration
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <%= render "rubyconfig" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          App ENV parameters
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        <%= render "envvars" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          App Rails Config
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+        <%= render "apprailsconfig" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          App Database Config
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+        <%= render "dbconfig" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+          What is this App?
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse">
+      <div class="panel-body">
+        <%= render "about" %>
+      </div>
+    </div>
+  </div>
+</div>
