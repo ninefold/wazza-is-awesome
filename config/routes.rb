@@ -5,6 +5,12 @@ DeployTest::Application.routes.draw do
     end
   end
   resources :jobs
+  resources :memcached do
+    collection do
+      get 'invalidate'
+    end
+  end
+
   resources :email_jobs
   match 'bgenvvars' => 'jobs#env_vars'
 
