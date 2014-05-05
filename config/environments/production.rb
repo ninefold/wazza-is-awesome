@@ -1,6 +1,3 @@
-memcached_config = YAML.load_file(Rails.root.join('config/memcached.yml'))
-memcached_hosts = memcached_config[Rails.env]['servers']
-
 DeployTest::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -46,7 +43,7 @@ DeployTest::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store, *memcached_hosts
+  # config.cache_store = :dalli_store, *memcached_hosts
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
