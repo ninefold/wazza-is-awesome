@@ -1,3 +1,6 @@
+memcached_config = YAML.load_file(Rails.root.join('config/memcached.yml'))
+memcached_hosts = memcached_config[Rails.env]['servers']
+
 DeployTest::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
