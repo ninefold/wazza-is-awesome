@@ -17,6 +17,20 @@ development:
   username: root
   password:
 
+# NB: The staging environment will test everything in the app, but it focuses on BYO database.
+# We've set up a database in the staging environment (172.30.5.55 - user / Password01)
+# Just put in a unique DB_NAME into environment variables each time you deploy the app
+# or else you'll get some other apps data ;)
+byodb:
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['DB_NAME'] %>
+  pool: 5
+  username: app
+  password: password
+  host: 172.30.5.55
+  port: 3306
+
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
