@@ -1,0 +1,6 @@
+<table class="table">
+    <tr><th> <b>header</b></th><th>value</th></tr>
+  <% request.headers.each do |key,value| -%>
+    <tr><td> <b><%= key %>:</b></td><td> <%= value %></td></tr>
+  <% end -%>
+</table>
