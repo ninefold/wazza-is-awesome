@@ -7,7 +7,6 @@ class CreateCensusShapes < ActiveRecord::Migration
       t.datetime "updated_at"
       t.spatial  "geom",         limit: {:srid=>4269, :type=>"geometry"}
     end
-
-    add_index "census_shapes", ["geom"], :name => "index_on_shape_geoms", :spatial => true
+#    add_index "census_shapes", ["geom"], :name => "index_on_shape_geoms", :spatial => true
   end
 end
