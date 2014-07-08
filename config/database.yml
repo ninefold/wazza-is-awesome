@@ -9,7 +9,7 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: sqlite3
+  adapter: postgis
   encoding: utf8
   reconnect: false
   database: deploy-test_development
@@ -30,7 +30,7 @@ test:
   password:
 
 production:
-  adapter: postgresql
+  adapter: postgis
   encoding: utf8
   reconnect: false
   database: deploy-test_production

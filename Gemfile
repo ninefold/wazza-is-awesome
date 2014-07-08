@@ -11,6 +11,7 @@ end
 
 group :production, :staging do
   gem 'pg'
+  gem 'activerecord-postgis-adapter'
 end
 
 gem 'skylight'
