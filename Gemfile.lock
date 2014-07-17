@@ -59,7 +59,7 @@ GEM
     minitest (5.4.0)
     mono_logger (1.1.0)
     multi_json (1.10.1)
-    mysql2 (0.3.16)
+    pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-protection (1.5.3)
@@ -149,7 +149,7 @@ DEPENDENCIES
   dalli
   jquery-rails
   lograge
-  mysql2
+  pg
   rails (~> 4.1.4)
   resque (~> 1.25.2)
   sass-rails (~> 4.0.3)
