@@ -17,6 +17,7 @@ gem 'skylight'
 gem 'resque', '~> 1.24.1'
 gem 'lograge'
 gem 'dalli'
+gem 'memcachier'
 
 # Gems used only for assets and not required
 # in production environments by default.
