@@ -1,0 +1,37 @@
+[Unit]
+Description=wazza-is-awesome-init.service
+
+# requirements
+Requires=docker.service
+#Requires=wazza-is-awesome-redis.service
+#Requires=wazza-is-awesome-memcached.service
+#Requires=wazza-is-awesome-postgres.service
+
+# dependencies
+After=etcd.service
+After=docker.service
+#After=wazza-is-awesome-redis.service
+#After=wazza-is-awesome-memcached.service
+#After=wazza-is-awesome-postgres.service
+
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill wazza-is-awesome-init
+ExecStartPre=-/usr/bin/docker rm wazza-is-awesome-init
+ExecStartPre=-/usr/bin/docker pull ic1z1prereg001.easyhost.local:5000/wazza-is-awesome:latest
+ExecStart=/usr/bin/bash -c \
+  "source /etc/environment; \
+  REDIS_URL=$(/usr/bin/etcdctl get /app/wazza-is-awesome/redis); \
+  MEMCACHE_SERVERS=$(/usr/bin/etcdctl get /app/wazza-is-awesome/memcached); \
+  DATABASE_URL=$(/usr/bin/etcdctl get /app/wazza-is-awesome/postgres); \
+  /usr/bin/docker run --name wazza-is-awesome-init \
+  -e REDIS_URL=$REDIS_URL -e MEMCACHE_SERVERS=$MEMCACHE_SERVERS -e DATABASE_URL=$DATABASE_URL \
+  ic1z1prereg001.easyhost.local:5000/wazza-is-awesome:latest /start init"
+ExecStop=/usr/bin/docker stop wazza-is-awesome-init
+TimeoutSec=120min
+
+[X-Fleet]
+#Conflicts=wazza-is-awesome-init.*.service

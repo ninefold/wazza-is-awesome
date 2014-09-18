@@ -1,0 +1,31 @@
+[Unit]
+Description=wazza-is-awesome-memcached.service
+
+# requirements
+Requires=docker.service
+
+# dependencies
+After=etcd.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill wazza-is-awesome-memcached
+ExecStartPre=-/usr/bin/docker rm wazza-is-awesome-memcached
+ExecStart=/usr/bin/docker run --name wazza-is-awesome-memcached -p 11211 sylvainlasnier/memcached:latest
+ExecStartPost=/usr/bin/bash -c \
+  "echo -n 'Waiting for memcached port '; \
+  while ! (/usr/bin/docker port wazza-is-awesome-memcached 11211 > /dev/null 2>&1); do \
+    echo -n '.' ; \
+    sleep 1; \
+  done"
+ExecStartPost=/usr/bin/bash -c \
+  "source /etc/environment; \
+  PORT=$(/usr/bin/docker port wazza-is-awesome-memcached 11211 | awk -F':' '{print $2}'); \
+  echo -n 'Saving memcached config: ' ; \
+  /usr/bin/etcdctl set /app/wazza-is-awesome/memcached $COREOS_PRIVATE_IPV4:$PORT"
+ExecStop=/usr/bin/docker stop wazza-is-awesome-memcached
+ExecStopPost=/usr/bin/etcdctl rm /app/wazza-is-awesome/memcached
+TimeoutSec=120min

@@ -14,4 +14,4 @@
 /log/*.log
 /tmp
 deploy-test_development
-config/memcached.yml
+/vendor/bundle

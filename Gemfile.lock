@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.3)
     builder (3.0.4)
+    building (1.1.2)
     chronic (0.10.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -42,6 +43,7 @@ GEM
     dalli (2.7.0)
     erubis (2.7.0)
     execjs (2.0.2)
+    highline (1.6.21)
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
@@ -81,6 +83,11 @@ GEM
       activesupport (= 3.2.9)
       bundler (~> 1.0)
       railties (= 3.2.9)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (3.2.9)
       actionpack (= 3.2.9)
       activesupport (= 3.2.9)
@@ -146,14 +153,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  building
   coffee-rails (~> 3.2.1)
   curb
   dalli
+  highline
   jquery-rails
   lograge
   memcachier
   pg
   rails (= 3.2.9)
+  rails_12factor
   resque (~> 1.24.1)
   sass-rails (~> 3.2.3)
   skylight

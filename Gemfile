@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+ruby '2.1.2'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.2.9'
 
 group :development, :test do
   gem 'sqlite3'
@@ -18,6 +17,11 @@ gem 'resque', '~> 1.24.1'
 gem 'lograge'
 gem 'dalli'
 gem 'memcachier'
+
+# required for using 'building' to generate container
+gem 'highline', :require => false
+gem 'building', :require => false
+gem 'rails_12factor'
 
 # Gems used only for assets and not required
 # in production environments by default.

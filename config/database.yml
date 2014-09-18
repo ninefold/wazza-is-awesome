@@ -30,10 +30,4 @@ test:
   password:
 
 production:
-  adapter: postgresql
-  encoding: utf8
-  reconnect: false
-  database: deploy-test_production
-  pool: 5
-  username: root
-  password:
+  url: <%= ENV['DATABASE_URL'] %>

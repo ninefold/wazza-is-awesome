@@ -5,4 +5,5 @@ if File.exist?(memcached_file)
     memcached_hosts = memcached_config['servers']
   end
 end
+memcached_hosts ||= ENV['MEMCACHE_SERVERS'] || '127.0.0.1:11211'
 Rails.application.config.cache_store = :dalli_store, *memcached_hosts

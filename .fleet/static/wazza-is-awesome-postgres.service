@@ -1,0 +1,31 @@
+[Unit]
+Description=wazza-is-awesome-postgres.service
+
+# requirements
+Requires=docker.service
+
+# dependencies
+After=etcd.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+ExecStartPre=-/usr/bin/docker kill wazza-is-awesome-postgres
+ExecStartPre=-/usr/bin/docker rm wazza-is-awesome-postgres
+ExecStart=/usr/bin/docker run --name wazza-is-awesome-postgres -p 5432 postgres:latest
+ExecStartPost=/usr/bin/bash -c \
+  "echo -n 'Waiting for postgres port '; \
+  while ! (/usr/bin/docker port wazza-is-awesome-postgres 5432 > /dev/null 2>&1); do \
+    echo -n '.' ; \
+    sleep 1; \
+  done"
+ExecStartPost=/usr/bin/bash -c \
+  "source /etc/environment; \
+  PORT=$(/usr/bin/docker port wazza-is-awesome-postgres 5432 | awk -F':' '{print $2}'); \
+  echo -n 'Saving postgres config: ' ; \
+  /usr/bin/etcdctl set /app/wazza-is-awesome/postgres postgres://postgres:@$COREOS_PRIVATE_IPV4:$PORT/wazza-is-awesome"
+ExecStop=/usr/bin/docker stop wazza-is-awesome-postgres
+ExecStopPost=/usr/bin/etcdctl rm /app/wazza-is-awesome/postgres
+TimeoutSec=120min
