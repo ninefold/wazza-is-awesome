@@ -28,6 +28,7 @@ ExecStart=/usr/bin/bash -c \
   MEMCACHE_SERVERS=$(/usr/bin/etcdctl get /app/wazza-is-awesome/memcached); \
   DATABASE_URL=$(/usr/bin/etcdctl get /app/wazza-is-awesome/postgres); \
   /usr/bin/docker run --name wazza-is-awesome-web-%i \
+  -m 250m \
   -p 8080 -e PORT=8080 \
   -e REDIS_URL=$REDIS_URL -e MEMCACHE_SERVERS=$MEMCACHE_SERVERS -e DATABASE_URL=$DATABASE_URL \
   ic1z1prereg001.easyhost.local:5000/wazza-is-awesome:latest /start web"
