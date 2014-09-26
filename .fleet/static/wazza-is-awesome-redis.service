@@ -12,20 +12,22 @@ After=docker.service
 TimeoutStartSec=0
 KillMode=none
 EnvironmentFile=/etc/environment
-ExecStartPre=-/usr/bin/docker kill wazza-is-awesome-redis
-ExecStartPre=-/usr/bin/docker rm wazza-is-awesome-redis
-ExecStart=/usr/bin/docker run --name wazza-is-awesome-redis -p 6379 redis:latest redis-server --appendonly yes
+Environment=CNAME=wazza-is-awesome-redis
+ExecStartPre=-/usr/bin/docker kill $CNAME
+ExecStartPre=-/usr/bin/docker rm $CNAME
+ExecStartPre=/usr/bin/docker pull redis:latest
+ExecStart=/usr/bin/docker run --name $CNAME -p 6379 redis:latest redis-server --appendonly yes
 ExecStartPost=/usr/bin/bash -c \
-  "echo -n 'Waiting for redis port '; \
-  while ! (/usr/bin/docker port wazza-is-awesome-redis 6379 > /dev/null 2>&1); do \
-    echo -n '.' ; \
-    sleep 1; \
-  done"
+    "echo -n 'Waiting for redis port '; \
+    while ! (/usr/bin/docker port $CNAME 6379 > /dev/null 2>&1); do \
+        echo -n '.' ; \
+        sleep 1; \
+    done"
 ExecStartPost=/usr/bin/bash -c \
-  "source /etc/environment; \
-  PORT=$(/usr/bin/docker port wazza-is-awesome-redis 6379 | awk -F':' '{print $2}'); \
-  echo -n 'Saving redis config: ' ; \
-  /usr/bin/etcdctl set /app/wazza-is-awesome/redis redis://$COREOS_PRIVATE_IPV4:$PORT"
-ExecStop=/usr/bin/docker stop wazza-is-awesome-redis
+    "source /etc/environment; \
+    PORT=$(/usr/bin/docker port $CNAME 6379 | awk -F':' '{print $2}'); \
+    echo -n 'Saving redis config: ' ; \
+    /usr/bin/etcdctl set /app/wazza-is-awesome/redis redis://${COREOS_PRIVATE_IPV4}:$PORT"
+ExecStop=/usr/bin/docker stop $CNAME
 ExecStopPost=/usr/bin/etcdctl rm /app/wazza-is-awesome/redis
 TimeoutSec=120min

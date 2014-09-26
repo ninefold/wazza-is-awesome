@@ -1,0 +1,29 @@
+[Unit]
+Description=registrator discovery service
+
+# requirements
+Requires=docker.service
+
+# dependencies
+After=etcd.service
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+KillMode=none
+EnvironmentFile=/etc/environment
+Environment=CNAME=registrator.%i
+ExecStartPre=-/usr/bin/docker kill $CNAME
+ExecStartPre=-/usr/bin/docker rm $CNAME
+ExecStartPre=/usr/bin/docker pull progrium/registrator
+ExecStart=/usr/bin/docker run \
+  --name $CNAME \
+  --net host \
+  -v /var/run/docker.sock:/tmp/docker.sock \
+  progrium/registrator \
+  etcd://${COREOS_PRIVATE_IPV4}:4001/services
+ExecStop=/usr/bin/docker stop $CNAME
+TimeoutSec=120min
+
+[X-Fleet]
+X-Conflicts=registrator*
