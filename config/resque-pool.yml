@@ -1,4 +1,0 @@
-development:
-  '*': 5
-production:
-  '*': 10
