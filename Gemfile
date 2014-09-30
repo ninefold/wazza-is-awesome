@@ -15,6 +15,7 @@ end
 
 gem 'skylight'
 gem 'resque', '~> 1.24.1'
+gem 'resque-pool'
 gem 'lograge'
 gem 'dalli'
 
