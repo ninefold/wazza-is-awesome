@@ -22,5 +22,5 @@
 env :SAMPLE_ENV_VAR, ENV['SAMPLE_ENV_VAR'] 
 
 every 15.minutes do
-  command "echo \"I am running from cron! Environment variable value: ${SAMPLE_ENV_VAR}\""
+  command "echo \"I am running from cron! Environment variable value: ${SAMPLE_ENV_VAR}\" > ~/cron_from_log.log"
 end
