@@ -2,17 +2,18 @@
 Description=wazza-is-awesome-worker.service instance %i
 
 # requirements
+Requires=etcd.service
 Requires=docker.service
-#Requires=wazza-is-awesome-redis.service
-#Requires=wazza-is-awesome-memcached.service
-#Requires=wazza-is-awesome-postgres.service
+Requires=wazza-is-awesome-redis.service
+Requires=wazza-is-awesome-memcached.service
+Requires=wazza-is-awesome-postgres.service
 
 # dependencies
 After=etcd.service
 After=docker.service
-#After=wazza-is-awesome-redis.service
-#After=wazza-is-awesome-memcached.service
-#After=wazza-is-awesome-postgres.service
+After=wazza-is-awesome-redis.service
+After=wazza-is-awesome-memcached.service
+After=wazza-is-awesome-postgres.service
 
 [Service]
 TimeoutStartSec=0
@@ -40,4 +41,4 @@ ExecStopPost=/usr/bin/etcdctl rm /app/wazza-is-awesome/worker/%i
 TimeoutSec=120min
 
 [X-Fleet]
-X-Conflicts=wazza-is-awesome-worker*
+X-Conflicts=wazza-is-awesome-worker@*.service

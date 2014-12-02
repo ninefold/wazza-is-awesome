@@ -2,6 +2,7 @@
 Description=wazza-is-awesome-web.service instance %i
 
 # requirements
+Requires=etcd.service
 Requires=docker.service
 #Requires=wazza-is-awesome-redis.service
 #Requires=wazza-is-awesome-memcached.service
@@ -49,4 +50,4 @@ ExecStopPost=/usr/bin/etcdctl rm /app/wazza-is-awesome/web/%i
 TimeoutSec=120min
 
 [X-Fleet]
-X-Conflicts=wazza-is-awesome-web*
+X-Conflicts=wazza-is-awesome-web@*.service

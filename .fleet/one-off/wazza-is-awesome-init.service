@@ -2,6 +2,7 @@
 Description=wazza-is-awesome-init.service
 
 # requirements
+Requires=etcd.service
 Requires=docker.service
 #Requires=wazza-is-awesome-redis.service
 #Requires=wazza-is-awesome-memcached.service
@@ -33,4 +34,3 @@ ExecStart=/usr/bin/bash -c \
 TimeoutSec=120min
 
 [X-Fleet]
-#Conflicts=wazza-is-awesome-init.*.service

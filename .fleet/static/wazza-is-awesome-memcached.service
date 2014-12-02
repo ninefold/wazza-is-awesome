@@ -2,6 +2,7 @@
 Description=wazza-is-awesome-memcached.service
 
 # requirements
+Requires=etcd.service
 Requires=docker.service
 
 # dependencies
