@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.4'
 
 gem 'rails', '3.2.9'
 
@@ -19,9 +19,9 @@ gem 'dalli'
 gem 'memcachier'
 
 # required for using 'building' to generate container
-gem 'highline', :require => false
-gem 'building', :require => false
-gem 'rails_12factor'
+#gem 'highline', :require => false
+#gem 'building', :require => false
+#gem 'rails_12factor'
 
 # Gems used only for assets and not required
 # in production environments by default.
