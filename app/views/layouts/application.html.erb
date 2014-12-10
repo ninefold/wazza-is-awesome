@@ -7,10 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <div class="navbar-header">
-      <h1><%= image_tag "logo.png" %>Ninefold Test App<a href="/" class="btn btn-default">Home</a></h1>
+
+  <a class="btn btn-default" href="/posts">Test the Database</a>
+  <a class="btn btn-default" href="/jobs">Test Resque</a>
+  <a class="btn btn-default" href="/memcached">Test Memcached</a>
+  <a class="btn btn-default" href="/conversation">Test Websockets</a>
+
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
     </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <a class="navbar-brand" href="/"><%= image_tag "logo.png" %> Ninefold Test App</a>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/posts">Database</a></li>
+        <li><a href="/jobs">Resque</a></li>
+        <li><a href="/memcached">Memcached</a></li>
+        <li><a href="/conversation">Websockets</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </nav>
+
+  <div id="wia-container" class="container">
     <%= yield %>
   </div>
 </body>

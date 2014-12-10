@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.find(:all, :order => "id desc", :limit => 30).reverse
+    @posts = Post.all.order("id desc").limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @post = Post.new(params[:post].permit(:name, :title, :content, :email))
 
     respond_to do |format|
       if @post.save
@@ -94,4 +94,5 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

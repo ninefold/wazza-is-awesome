@@ -4,22 +4,24 @@
 
 <p>There are <%= pluralize Post.count, 'post' %> in the database.</p>
 
-<hr />
-
-<%= link_to 'Create lots of posts in the background', jobs_path, :method => :post, :class => "btn btn-lg" %>
-This will use Resque to create posts iteratively over time. You'll end up with lots of them.
-
-<hr />
-
-<%= link_to 'Print worker environment variables', bgenvvars_path, :method => :get, :class => "btn btn-lg" %>
-Prints the list of environment variables as interpreted by the worker tier to the worker log.
-
-<hr />
-
-<fieldset>
-<%= form_tag(email_jobs_path, method: :post) do %>
+<table>
+<tr>
+<td><%= link_to 'Create lots of posts in the background', jobs_path, :method => :post, :class => "btn" %></td>
+<td>This will use Resque to create posts iteratively over time. You'll end up with lots of them.</td>
+</tr>
+<tr>
+<td><%= link_to 'Print worker environment variables', bgenvvars_path, :method => :get, :class => "btn" %></td>
+<td>Prints the list of environment variables as interpreted by the worker tier to the worker log.</td>
+</tr>
+<tr>
+<td>Send an email</td>
+<td><%= form_tag(email_jobs_path, method: :post) do %>
   <%= label_tag(:q, "Email address:") %>
   <%= text_field_tag(:email) %>
   <%= submit_tag("Email me in the background") %>
-<% end %>
+<% end %></td>
+</table>
+
+<fieldset>
+
 </fieldset>
