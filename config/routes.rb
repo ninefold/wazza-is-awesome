@@ -10,9 +10,10 @@ DeployTest::Application.routes.draw do
       get 'invalidate'
     end
   end
+  resources :conversation
 
   resources :email_jobs
-  match 'bgenvvars' => 'jobs#env_vars'
+  get 'bgenvvars' => 'jobs#env_vars'
 
   get "home/index"
 
