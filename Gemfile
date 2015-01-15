@@ -35,7 +35,7 @@ end
 gem 'jquery-rails'
 
 # check that curb gem package is installed properly OCT-3262
-gem 'curb'
+gem 'curb', '>= 0.8.6'
 
 # test cron jobs using whenever. the :require => false
 # tells bundler not to load the gem automatically
