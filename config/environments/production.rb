@@ -21,7 +21,7 @@ DeployTest::Application.configure do
   config.assets.digest = true
 
   # Configure log rage to make rails log more consumable
-  config.lograge.enabled = true
+  #  config.lograge.enabled = true
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -34,7 +34,7 @@ DeployTest::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
