@@ -1,4 +1,9 @@
 DeployTest::Application.configure do
+
+  config.logger = Logger.new(STDOUT).tap do |logger|
+    logger.formatter = Logger::Formatter.new
+  end
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -36,5 +41,6 @@ DeployTest::Application.configure do
   config.assets.debug = true
 
   # Configure log rage to make rails log more consumable
-  config.lograge.enabled = false
+  # config.lograge.enabled = false
+
 end
