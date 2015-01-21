@@ -1,9 +1,5 @@
 DeployTest::Application.configure do
 
-  config.logger = Logger.new(STDOUT).tap do |logger|
-    logger.formatter = Logger::Formatter.new
-  end
-
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
