@@ -21,7 +21,7 @@ DeployTest::Application.configure do
   config.assets.digest = true
 
   # Configure log rage to make rails log more consumable
-  config.lograge.enabled = false
+  # config.lograge.enabled = false
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
