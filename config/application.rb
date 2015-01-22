@@ -12,7 +12,7 @@ end
 module DeployTest
   class Application < Rails::Application
 
-    logger.formatter = Formatter.new
+    config.log_formatter = ::Logger::Formatter.new
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
