@@ -12,7 +12,7 @@ end
 module DeployTest
   class Application < Rails::Application
 
-    config.logger = Logger.new("#{Rails.env}.log").tap do |logger|
+    config.logger = Logger.new(File.join('log',"#{Rails.env}.log")).tap do |logger|
       logger.formatter = Logger::Formatter.new
     end
 
