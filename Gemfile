@@ -54,3 +54,4 @@ gem 'whenever', :require => false
 
 # To use debugger
 # gem 'debugger'
+gem 'webp-ffi'
